@@ -20,7 +20,7 @@ const Show = (props) => {
 
     // get item data from db
     function getItem(id) {
-        fetch(`http://localhost:3001/toys/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/toys/${id}`)
             .then(res => res.json())
             .then(data => setItemData(data))
             .catch(error => alert(error)) // show alert incase of an error
@@ -49,7 +49,7 @@ const Show = (props) => {
                 likes: likes,
             })
         }
-        fetch(`http://localhost:3001/toys/${id}`, configObj)
+        fetch(`${process.env.REACT_APP_API_URL}/toys/${id}`, configObj)
             .then(res => res.json())
             .then(data => updateItemState(data)) // update the item in the app state
             .then(setEditOn(false))
